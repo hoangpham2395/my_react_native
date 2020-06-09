@@ -1,14 +1,14 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import SCREEN_NAME from "../../libraries/constants/screenName";
-import HomeScreen from "../../screens/HomeScreen";
+import SignInScreen from "../../screens/SignInScreen";
 
 const LoginStack = createStackNavigator({
-        [SCREEN_NAME.HOME_SCREEN]: {screen: HomeScreen},
+        [SCREEN_NAME.SIGN_IN_SCREEN]: {screen: SignInScreen},
     }, {
         headerMode: 'none'
     },
     {
-        initialRouteName: { screen: HomeScreen },
+        initialRouteName: { screen: SignInScreen },
     }
 );
 

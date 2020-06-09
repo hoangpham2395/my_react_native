@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { TouchableWithoutFeedback, View, Text } from 'react-native';
 import styles from "./styles";
 import SCREEN_NAME from "../../libraries/constants/screenName";
+import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorageName from "../../libraries/constants/AsyncStorageName";
 
 class SplashScreen extends Component
 {
@@ -18,7 +20,7 @@ class SplashScreen extends Component
     }
 
     async getToken() {
-        const token = 'my_react_native';
+        const token = await AsyncStorage.getItem(AsyncStorageName.TOKEN);
         if (token !== null || !token) {
             this.setState({token});
         }

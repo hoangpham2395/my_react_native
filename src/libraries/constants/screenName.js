@@ -3,6 +3,7 @@ const SCREEN_NAME = {
     LOGIN_STACK: 'LoginStack',
     HOME_SCREEN: 'HomeScreen',
     SPLASH_SCREEN: 'SplashScreen',
+    SIGN_IN_SCREEN: 'SignInScreen',
 };
 
 export default SCREEN_NAME;
