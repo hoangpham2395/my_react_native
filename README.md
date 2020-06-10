@@ -9,3 +9,4 @@
 ## Note
 
 - Use redux-saga 1.1.3
+- Use react-native-firebase 5.6.0
