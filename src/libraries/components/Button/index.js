@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
         paddingVertical: Ratio.ratio * 20,
         paddingHorizontal: Ratio.ratio * 80,
         borderRadius: 50,
+        alignItems: 'center',
     },
     textButton: {
         color: colors.White,
