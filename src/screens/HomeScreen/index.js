@@ -23,6 +23,7 @@ class HomeScreen extends Component
             <View>
                 <Text>This is Home screen.</Text>
                 <ButtonCmp text={'Sign out'} onPress={this.signOut}/>
+                <ButtonCmp text={'Map'} onPress={() => this.props.navigation.navigate(SCREEN_NAME.MAP_SCREEN)}/>
             </View>
         );
     }
