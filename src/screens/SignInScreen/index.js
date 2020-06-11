@@ -7,6 +7,7 @@ import InputCmp from "./components/InputCmp";
 import AsyncStorageName from "../../libraries/constants/AsyncStorageName";
 import SCREEN_NAME from "../../libraries/constants/screenName";
 import ButtonCmp from "../../libraries/components/Button";
+import {initUsersDB} from "../../libraries/database/example";
 
 class SignInScreen extends Component
 {
@@ -27,6 +28,9 @@ class SignInScreen extends Component
         if (!password || password === null) {
             return Alert.alert('', "Please enter password.");
         }
+
+        // Create DB local
+        initUsersDB();
 
         let that = this;
         return Alert.alert('', 'Login success', [
