@@ -13,6 +13,7 @@ import java.util.List;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -31,6 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new MyReactNativePackage());
           packages.add(new RNFirebaseMessagingPackage());
           packages.add(new RNFirebaseNotificationsPackage());
+          // packages.add(new FBSDKPackage());
           return packages;
         }
 

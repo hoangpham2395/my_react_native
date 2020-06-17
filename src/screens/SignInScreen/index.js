@@ -51,6 +51,7 @@ class SignInScreen extends Component
                     <InputCmp title={'Password'} onChangeText={(password) => this.setState({password})} secureTextEntry={true}/>
                 </View>
                 <ButtonCmp text={'Sign in'} onPress={this.signIn}/>
+                <ButtonCmp text={'Login Facebook'} onPress={() => this.props.navigation.navigate(SCREEN_NAME.LOGIN_FB_SCREEN)}/>
             </View>
         );
     }
