@@ -4,6 +4,7 @@ import FBLoginButton from "./components/FBLoginButton";
 import {LoginManager, GraphRequest, GraphRequestManager, AccessToken} from 'react-native-fbsdk';
 import styles from "./styles";
 import ButtonCmp from "../../../libraries/components/Button";
+import TextInfo from "../components/TextInfo";
 
 class LoginFBScreen extends Component
 {
@@ -99,21 +100,6 @@ class LoginFBScreen extends Component
                     </View>
                 }
                 <ButtonCmp text={this.state.isLogin ? 'Logout Facebook' : 'Login facebook'} onPress={() => this.loginFB()}/>
-            </View>
-        );
-    }
-}
-
-class TextInfo extends Component
-{
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <View>
-                <Text><Text style={{fontWeight: 'bold'}}>{this.props.title}</Text>: {this.props.value}</Text>
             </View>
         );
     }
