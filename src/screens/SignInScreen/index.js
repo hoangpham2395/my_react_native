@@ -52,6 +52,7 @@ class SignInScreen extends Component
                 </View>
                 <ButtonCmp text={'Sign in'} onPress={this.signIn}/>
                 <ButtonCmp text={'Login Facebook'} onPress={() => this.props.navigation.navigate(SCREEN_NAME.LOGIN_FB_SCREEN)}/>
+                <ButtonCmp text={'Login Google'} onPress={() => this.props.navigation.navigate(SCREEN_NAME.LOGIN_GG_SCREEN)}/>
             </View>
         );
     }

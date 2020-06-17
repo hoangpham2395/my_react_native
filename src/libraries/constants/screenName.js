@@ -5,6 +5,7 @@ const SCREEN_NAME = {
     SPLASH_SCREEN: 'SplashScreen',
     SIGN_IN_SCREEN: 'SignInScreen',
     LOGIN_FB_SCREEN: 'LoginFBScreen',
+    LOGIN_GG_SCREEN: 'LoginGGScreen',
 };
 
 export default SCREEN_NAME;
