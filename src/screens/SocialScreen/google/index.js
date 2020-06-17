@@ -28,6 +28,10 @@ class LoginGGScreen extends Component
     }
 
     signIn = async () => {
+        if (this.state.isLogin) {
+            return this.signOut();
+        }
+
         try {
             await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
             const userInfo = await GoogleSignin.signIn();
@@ -67,7 +71,14 @@ class LoginGGScreen extends Component
         try {
             await GoogleSignin.revokeAccess();
             await GoogleSignin.signOut();
-            this.setState({ user: null }); // Remember to remove the user from your app's state as well
+            this.setState({
+                isLogin: false,
+                token: null,
+                id: '',
+                name: '',
+                email: '',
+                avatar: '',
+            });
         } catch (error) {
             console.error(error);
         }
@@ -93,7 +104,7 @@ class LoginGGScreen extends Component
                     </View>
                 </ScrollView>
                 }
-                <ButtonCmp text={'Login Google'} onPress={this.signIn}/>
+                <ButtonCmp text={this.state.isLogin ? 'Logout Google' : 'Login Google'} onPress={this.signIn}/>
             </View>
         );
     }
