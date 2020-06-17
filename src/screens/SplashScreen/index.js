@@ -4,6 +4,7 @@ import styles from "./styles";
 import SCREEN_NAME from "../../libraries/constants/screenName";
 import AsyncStorage from '@react-native-community/async-storage';
 import AsyncStorageName from "../../libraries/constants/AsyncStorageName";
+import NetInfo from "@react-native-community/netinfo";
 
 class SplashScreen extends Component
 {
@@ -17,6 +18,14 @@ class SplashScreen extends Component
     componentDidMount() {
         this.getToken().then((res) => {}).catch((err) => console.log(err));
         setTimeout(this.onNavigate, 500);
+        NetInfo.fetch().then(state => {
+            console.log(state);
+            console.log("Connection type", state.type);
+            console.log("Is connected?", state.isConnected);
+            if (!state.isConnected) {
+                alert('Not connect internet');
+            }
+        });
     }
 
     async getToken() {
