@@ -1,7 +1,102 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity, Dimensions} from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import styles from "./styles";
+
+const { width, height } = Dimensions.get('window');
+const ASPECT_RATIO = width / height;
+const LATITUDE = 21.0278;
+const LONGITUDE = 105.8342;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+
+class MapScreen extends Component
+{
+    constructor(props) {
+        super(props);
+        this.state = {
+            region: {
+                latitude: LATITUDE,
+                longitude: LONGITUDE,
+                latitudeDelta: LATITUDE_DELTA,
+                longitudeDelta: LONGITUDE_DELTA,
+            },
+            coordinate: {
+                latitude: LATITUDE,
+                longitude: LONGITUDE,
+            },
+            amount: 99,
+        };
+    }
+
+    increment() {
+        this.setState({ amount: this.state.amount + 1 });
+    }
+
+    decrement() {
+        this.setState({ amount: this.state.amount - 1 });
+    }
+
+    render() {
+        return (
+            <View style={styles.container}>
+                <MapView
+                    provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+                    style={styles.mapStyle}
+                    initialRegion={this.state.region}
+                    // customMapStyle={mapStyle}
+                >
+                    <Marker
+                        draggable
+                        coordinate={{
+                            latitude: 21.0278,
+                            longitude: 105.8342,
+                        }}
+                        onDragEnd={(e) => console.warn(JSON.stringify(e.nativeEvent.coordinate))}
+                        title={'Hanoi'}
+                        description={'Capital of Vietnam'}
+                        pinColor="orange"
+                    />
+                    <Marker
+                        draggable
+                        coordinate={{
+                            latitude: 20.998029,
+                            longitude: 105.7924504,
+                        }}
+                        onDragEnd={(e) => console.warn(JSON.stringify(e.nativeEvent.coordinate))}
+                        title={'Viwaseen'}
+                        description={'Viwaseen building'}
+                        pinColor="green"
+                    />
+                    <Marker
+                        draggable
+                        coordinate={{
+                            latitude: 21.0051014,
+                            longitude: 105.8434403,
+                        }}
+                        onDragEnd={(e) => console.warn(JSON.stringify(e.nativeEvent.coordinate))}
+                        title={'HUST'}
+                        description={'Hanoi University of Science and Technology'}
+                    />
+                </MapView>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity
+                        onPress={() => this.decrement()}
+                        style={[styles.bubble, styles.button]}
+                    >
+                        <Text style={styles.amountButton}>-</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => this.increment()}
+                        style={[styles.bubble, styles.button]}
+                    >
+                        <Text style={styles.amountButton}>+</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        );
+    }
+}
 
 const mapStyle = [
     {
@@ -251,42 +346,5 @@ const CustomMarker = () => (
         <Text>Hanoi</Text>
     </View>
 );
-
-class MapScreen extends Component
-{
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <View style={styles.container}>
-                <MapView
-                    provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-                    style={styles.mapStyle}
-                    initialRegion={{
-                        latitude: 21.0278,
-                        longitude: 105.8342,
-                        latitudeDelta: 0.05,
-                        longitudeDelta: 0.05,
-                    }}
-                    // customMapStyle={[mapStyle]}
-                >
-                    <Marker
-                        draggable
-                        coordinate={{
-                            latitude: 21.0278,
-                            longitude: 105.8342,
-                        }}
-                        onDragEnd={(e) => console.warn(JSON.stringify(e.nativeEvent.coordinate))}
-                        title={'Test Marker'}
-                        description={'This is a description of the marker'}
-                        pinColor="orange"
-                    />
-                </MapView>
-            </View>
-        );
-    }
-}
 
 export default MapScreen;
